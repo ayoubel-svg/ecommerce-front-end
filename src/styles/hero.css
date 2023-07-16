@@ -1,0 +1,74 @@
+:root {
+    --higlight-color: #FEDE68;
+    --color-white: #fff;
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-typography {
+    width: 50%;
+    min-height: 100vh;
+    background: #586A8C;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+    padding: 4em;
+    gap: 4em;
+}
+
+.hero-typography h1 {
+    font-size: 3.5em;
+    text-align: start;
+}
+
+.btn {
+    padding: 15px 25px;
+    border: 1px solid #D9A171;
+    background: #D9A171;
+    color: #fff;
+    font-size: 1.3em;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #586A8C;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform ease-in .5s;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    transform: scaleX(1);
+}
+
+.btn:hover {
+    color: #D9A171;
+}
+
+.hero-image {
+    width: 50%;
+    min-height: 100vh;
+    padding: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-image img {
+    width: 80%;
+    height: 100%;
+}

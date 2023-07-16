@@ -1,0 +1,39 @@
+.my-checkout {
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 8em;
+    padding-bottom: 5em;
+}
+
+.my-section2 {
+    width: 500px;
+    height: 100%;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2em;
+    margin: auto;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+}
+
+.my-section2 div {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.my-section2 div input {
+    width: 100%;
+    padding: 10px;
+}
+
+.pay {
+    background: black;
+    color: white;
+    padding: 10px 30px;
+}

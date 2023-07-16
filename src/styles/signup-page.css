@@ -1,0 +1,132 @@
+.signup-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.sign-form {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5em;
+}
+
+.email-box input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
+}
+
+.pass-box input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
+}
+
+.name-box input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
+}
+
+.signup-img {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-img img {
+    width: 80%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+.signup-form {
+    width: 50%;
+    height: 100vh;
+    background: #009D94;
+    padding: 7em 5em;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.signup-google {
+    width: 100%;
+    height: 15%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    gap: 1em;
+    background: #fff;
+}
+
+.signup-google img {
+    width: 3%;
+}
+
+.signup-google span {
+    font-size: 1.2em;
+}
+
+.btn-signup {
+    position: relative;
+    padding: 10px 25px;
+    color: #fff;
+    background: #D9A171;
+    border: none;
+    cursor: pointer;
+    border: 1px solid #D9A171;
+    font-size: 1em;
+    z-index: 1;
+    width: 100%;
+}
+
+.btn-signup::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: scaleX(0);
+    transition: transform 0.4s ease-in-out;
+    transform-origin: left;
+    background: #009d94;
+    z-index: -1;
+}
+
+.btn-signup:hover::before {
+    transform: scaleX(1);
+}
+
+.btn-signup:hover {
+    color: #fff;
+}
+
+.to-login {
+    width: 100%;
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+    .signup-page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .signup-img {
+        display: none;
+    }
+}
