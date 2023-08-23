@@ -28,16 +28,17 @@
 }
 
 .btn {
-    padding: 15px 25px;
+    padding: 10px 25px;
     border: 1px solid #D9A171;
     background: #D9A171;
     color: #fff;
-    font-size: 1.3em;
+    font-size: 1.1em;
     position: relative;
     z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .btn::before {
@@ -71,4 +72,27 @@
 .hero-image img {
     width: 80%;
     height: 100%;
+}
+
+.product-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.product-header h1 {
+    width: 20%;
+    text-align: start;
+}
+
+.product-header div {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.product-header div span {
+    font-size: 1.3em;
 }

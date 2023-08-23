@@ -16,7 +16,6 @@ const SignUp = () => {
     password: "",
   });
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   function handleChange(e) {
     const { value, name } = e.target;
     setValues({ ...values, [name]: value });
@@ -46,18 +45,20 @@ const SignUp = () => {
         }
       );
       res.status === 200 && notify();
-      setTimeout(() => navigate("/login"), 2000)
+      sessionStorage.setItem("token", res.data.data.token)
+      sessionStorage.setItem("id", res.data.data.user.id)
+      setTimeout(() => {
+        navigate("/")
+      }, 200)
     } catch (err) {
       console.log(`Error => ${err.message}`);
     }
   }
-  useEffect(() => {
-    setValues({
-      name: "",
-      email: "",
-      password: "",
-    });
-  }, []);
+
+  const token = sessionStorage.getItem("token")
+  setTimeout(() => {
+    if (token) navigate("/")
+  }, 100)
   return (
     <div className="signup-page">
       <div className="signup-form">

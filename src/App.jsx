@@ -13,11 +13,12 @@ import Checkout from './components/Checkout'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import { useLocation } from 'react-router-dom'
+import Profile from './components/Profile'
+import NotFound from "./components/NotFound"
 function App() {
   const path = useLocation().pathname
-
   return (
-    <div className="App">
+    <div className="App" >
       <NavBar color={(path === "/" || path === "/login" || path === "/register") ? "#fff" : "#586A8C"} />
       <Routes>
         <Route path='/login' element={<Login />} />
@@ -27,8 +28,10 @@ function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/about' element={<About />} />
         <Route path='/shop' element={<ShopingCart />} />
+        <Route path='/profile/:id' element={<Profile />} />
         <Route path='/productdetaille/:id' element={<ProductsDetaills />} />
         <Route path='/checkout' element={<Checkout />} />
+        <Route path='/*' element={<NotFound />} />
       </Routes>
       <Footer />
     </div>

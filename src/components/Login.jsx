@@ -51,12 +51,17 @@ const Login = () => {
           "Content-Type": "application/json",
         },
       });
-      res.status === 200 ? notify() : setIsCorrect(true) && wrong();
+      sessionStorage.setItem("token", res.data.data.token)
+      sessionStorage.setItem("id", res.data.data.user.id)
+      sessionStorage.setItem("role", res.data.data.user.role)
+      navigate("/")
     } catch (err) {
       console.log(`Error is ${err.message}`);
+      setIsCorrect(true)
     }
   }
-  if (!users) return "loading ...";
+  const token = sessionStorage.getItem("token")
+  if (token) navigate("/")
   return (
     <div className="login-page">
       <div className="login-container">

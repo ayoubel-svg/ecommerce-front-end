@@ -3,46 +3,29 @@ import "../styles/card.css"
 import AddIcon from '@mui/icons-material/Add';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import { useSelector, useDispatch } from "react-redux";
-import { increment, decrement } from "../data/CounterSlice";
 import { Link, useNavigate } from "react-router-dom";
-import { add_to_cart } from "../data/cartSlice";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Star from "./Star";
+import { FaRegHeart } from "react-icons/fa";
+import { useEffect } from "react";
 const Card = (props) => {
-    const { id, title, description, price, images } = props
-    const dispatch = useDispatch()
-    function handleClick() {
-        dispatch(increment())
-        dispatch(add_to_cart({ ...props }))
-    }
-    const notify = () => toast.success('item added with success', {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-    });
+    const { image, price, name, description } = props
     return (
         <div className="card">
             <div className="my-img">
-                <Link to={`/productdetaille/${id}`}><img src={images[0]} alt={images} /></Link>
+                {image && <img src={`http://localhost:8000/${image}`} alt="pic" />}
             </div>
-            <div style={{ width: "100%", marginTop: "4em", display: "flex", alignItems: "flex-start", justifyContent: "center", flexDirection: "column", gap: "10px", padding: "0px 10px" }}>
-                <Link to={`/productdetaille/${id}`}><h3>{title}</h3></Link>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 10px", width: "100%" }}>
-                    <span>${price}</span>
-                    <span className="back-add" onClick={() => {
-                        handleClick()
-                        notify()
-                    }
-                    }>
-                        <AddIcon className="addIcon" />
-                    </span>
+            <div className="card-body">
+                <h3>{name}</h3>
+                <Star />
+                <p>{description.slice(0, 50)}</p>
+                <div className="card-footer">
+                    <span style={{ fontWeight: "bolder" }}>$ {price}</span>
+                    <Link className="add_to">Add to cart</Link>
+                    <FaRegHeart size={25} cursor="pointer" />
                 </div>
+
             </div>
             <ToastContainer />
         </div>

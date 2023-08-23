@@ -1,64 +1,192 @@
 .navBar {
-    width: 100%;
-    height: 60px;
-    padding: 5px 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: absolute;
-    gap: 1.5em;
+  width: 100%;
+  height: 60px;
+  padding: 5px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  gap: 1.5em;
 }
 
 .logo {
-    width: 20%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo a {
-    font-size: 1.6em;
-    color: black;
+  font-size: 1.6em;
+  color: black;
 }
 
 .navBar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: black;
-    gap: 4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  gap: 4em;
 }
 
 .menu {
-    font-size: 1.1em;
-    width: 60%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+  font-size: 1.1em;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .authentification {
-    width: 20%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    padding: 10px;
-    font-weight: 300;
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 10px;
+  font-weight: 300;
 }
 
 .login {
-    padding: 10px;
-    border-bottom: 1px solid #586A8C;
-    color: #586A8C;
-    font-weight: 300;
+  padding: 10px;
+  border-bottom: 1px solid #586a8c;
+  color: #586a8c;
+  font-weight: 300;
 }
 
 .signUp {
-    color: white;
+  color: white;
+  padding: 10px;
+  background: #586a8c;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shopping-cart {
+  display: flex;
+  align-items: center;
+}
+
+.profile-avatar {
+  display: flex;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+
+  & img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.profile-select {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  background: #0000004f;
+  width: 100vw;
+  z-index: 10;
+  height: 100vh;
+  border-radius: 8px;
+
+  & .select-option {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     padding: 10px;
-    background: #586A8C;
-    border-radius: 8px;
+    width: 300px;
+    height: 100%;
+    background: #fff;
+    float: right;
+
+    & .head {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      & .close {
+        display: flex;
+        align-items: center;
+
+        & button {
+          outline: none;
+          border: none;
+          background: none;
+
+          & .close-btn {
+            font-size: 2em;
+            cursor: pointer;
+          }
+        }
+      }
+
+      & .title {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        & img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+
+        & span {
+          font-size: 1.1em;
+        }
+      }
+    }
+  }
+
+  & .profile-section {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(193, 193, 193, 0.132);
+    }
+
+    & .profile-icon {
+      color: grey;
+    }
+  }
+
+  & .setting-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(193, 193, 193, 0.132);
+    }
+
+    & .setting-icon {
+      color: grey;
+    }
+  }
+
+  & hr {
+    width: 90%;
+    display: flex;
+    align-self: center;
+    height: 0;
+    background: rgba(128, 128, 128, 0.319);
+    opacity: 0.2;
+
+  }
+}
+
+.active {
+  overflow: hidden;
 }

@@ -5,41 +5,32 @@ import Card from "./Card";
 import "../styles/store.css";
 import { CircularProgress } from "@mui/material";
 import { fetchCloths } from "../data/fecthSlice";
+import axios from "axios";
 const MyStore = () => {
   const [values, setValues] = useState({
     search: "",
     category: "shoes",
   });
-  const [products, setProducts] = useState([]);
-  const data1 = useSelector((state) => state.sneakers.data);
-  const data4 = useSelector((state) => state.fetch.data);
-  const dispatch = useDispatch();
+  const [products, setProdducts] = useState([])
+  const token = sessionStorage.getItem("token")
   useEffect(() => {
-    dispatch(fetchSneakers());
-    dispatch(fetchCloths());
-  }, []);
-  useEffect(() => {
-    if (values.category === "shoes") {
-      setProducts(data1);
-    } else if (values.category === "clothes") {
-      setProducts(data4);
+    const getPoducts = async () => {
+      try {
+        const res = await axios.get("http://localhost:8000/api/product", {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          }
+        });
+        setProdducts(res.data.data);
+        console.log(res.data.data)
+      } catch (err) {
+        console.log(err)
+      }
     }
-  }, [values]);
-  useEffect(() => {
-    if (values.category === "shoes") {
-      setProducts((prev) => {
-        return prev.filter((item) => item.title.includes(values.search));
-      });
-    } else if (values.category === "clothes") {
-      setProducts((prev) => {
-        return prev.filter((item) => item.title.includes(values.search));
-      });
-    }
-  }, [values.search]);
-  function handleChnage(e) {
-    const { name, value } = e.target;
-    setValues({ ...values, [name]: value });
-  }
+    getPoducts();
+  }, [token])
   if (products.length === 0)
     return (
       <div
@@ -58,22 +49,10 @@ const MyStore = () => {
   return (
     <div className="mystore">
       <div className="search-section">
-        <input
-          type="text"
-          className="search-item"
-          placeholder="Search for items ..."
-          onChange={handleChnage}
-          name="search"
-        />
-        <select name="category" id="category" onChange={handleChnage}>
-          <option selected value="shoes">
-            Shoes
-          </option>
-          <option value="clothes">clothes</option>
-        </select>
+
       </div>
       <div className="store">
-        {products.slice(0, 40).map((ele, i) => {
+        {products.map((ele, i) => {
           return <Card key={i} {...ele} />;
         })}
       </div>
