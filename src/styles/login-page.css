@@ -1,6 +1,17 @@
-.login-page {
+.main-login-container {
     width: 100%;
     height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.login-page {
+    width: 800px;
+    height: 600px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -8,14 +19,15 @@
 
 .login-container {
     width: 50%;
-    min-height: 100vh;
+    height: 100%;
+    border-radius: 8px 0 0 8px;
     background: #1F93FA;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap: 1.1em;
-    padding: 5em;
+    padding: 2em;
 }
 
 .login-form {
@@ -27,42 +39,83 @@
     gap: 1.5em;
 }
 
+
+.forget-password {
+    width: 100%;
+    font-size: 10px;
+    color: #fff;
+    text-align: end;
+}
+
+.to-signup {
+    width: 100%;
+    color: #fff;
+    font-size: 13px;
+
+    & .to-register {
+        font-weight: bold;
+        font-size: 15px;
+        color: #fff;
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+    }
+
+}
+
 .email-box,
 .pass-box {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .email-box input {
     width: 100%;
     padding: 15px;
     font-size: 1em;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.email-box input::placeholder {
+    font-size: 14px;
+}
+
+.email-box label,
+.pass-box label {
+    font-size: 15px;
 }
 
 .pass-box input {
     width: 100%;
     padding: 15px;
     font-size: 1em;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+}
 
+.pass-box input::placeholder {
+    font-size: 13px;
 }
 
 .login-img {
-    width: 50%;
-    height: 100%;
+    width: 75%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5em;
+    padding: 1em;
 }
 
 .login-img img {
     width: 100%;
     height: 100%;
+
 }
 
-.to-signup {
-    width: 100%;
-    color: #fff;
-}
 
 .btn-login {
     width: 100%;
@@ -104,12 +157,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.1em;
-    font-size: 1.2em;
+    gap: .5em;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
 }
 
 .google-login img {
-    width: 3%;
+    width: 10%;
 }
 
 @media (max-width: 600px) {

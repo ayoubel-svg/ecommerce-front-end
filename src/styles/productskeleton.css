@@ -1,0 +1,40 @@
+.product-skeleton {
+    display: flex;
+    gap: 1em;
+    width: 1000px;
+    height: 600px;
+    margin: auto;
+    padding: 2em;
+
+    & .img-section-skeleton {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        min-height: 100%;
+
+        & .main-img-skeleton {
+            width: 100%;
+            height: 100%;
+        }
+
+        & .subimg-skeleton {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            & .subimg-div {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    }
+
+    & .main-info-skeleton {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+    }
+}

@@ -7,9 +7,11 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import "../styles/footer.css"
+import { useLocation } from "react-router-dom";
 const Footer = () => {
+    const { pathname } = useLocation()
     return (
-        <div className="footer">
+        <div className="footer" style={{ display: pathname === "/login" || pathname === "/register" || pathname === "/forget-password" || pathname === "/reset-password" ? "none" : "" }}>
             <div className="footer-section1">
                 <div className="principal">
                     <div className="principe">

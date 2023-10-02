@@ -7,6 +7,7 @@
   justify-content: space-between;
   position: absolute;
   gap: 1.5em;
+  z-index: 1;
 }
 
 .logo {
@@ -17,7 +18,8 @@
 }
 
 .logo a {
-  font-size: 1.6em;
+  font-size: 2em;
+  font-weight: 600;
   color: black;
 }
 
@@ -48,19 +50,21 @@
 
 .login {
   padding: 10px;
-  border-bottom: 1px solid #586a8c;
-  color: #586a8c;
+  border-bottom: 1px solid #000;
+  color: #000;
   font-weight: 300;
+
 }
 
 .signUp {
-  color: white;
-  padding: 10px;
-  background: #586a8c;
+  color: #fff;
+  padding: 8px 10px;
+  background: #4aca4a;
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: fit-content;
 }
 
 .shopping-cart {
@@ -142,48 +146,78 @@
     }
   }
 
-  & .profile-section {
+  & .body {
     display: flex;
-    align-items: center;
-    gap: 15px;
-    width: 100%;
-    padding: 10px;
-    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 
-    &:hover {
-      background: rgba(193, 193, 193, 0.132);
+    & .top-body {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      & .profile-section {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+        padding: 10px;
+        cursor: pointer;
+
+        &:hover {
+          background: rgba(193, 193, 193, 0.132);
+        }
+
+        & .profile-icon {
+          color: grey;
+        }
+      }
+
+      & .setting-section {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+        padding: 10px;
+        cursor: pointer;
+
+        &:hover {
+          background: rgba(193, 193, 193, 0.132);
+        }
+
+        & .setting-icon {
+          color: grey;
+        }
+      }
+
+      & hr {
+        width: 90%;
+        display: flex;
+        align-self: center;
+        height: 0;
+        background: rgba(128, 128, 128, 0.319);
+        opacity: 0.2;
+
+      }
     }
 
-    & .profile-icon {
-      color: grey;
+    & .bottom-body {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      width: 100%;
+      padding: 10px;
+      cursor: pointer;
+
+      &:hover {
+        background: rgba(193, 193, 193, 0.132);
+      }
+
+      & .logout-icon {
+        color: grey;
+      }
     }
-  }
-
-  & .setting-section {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    width: 100%;
-    padding: 10px;
-    cursor: pointer;
-
-    &:hover {
-      background: rgba(193, 193, 193, 0.132);
-    }
-
-    & .setting-icon {
-      color: grey;
-    }
-  }
-
-  & hr {
-    width: 90%;
-    display: flex;
-    align-self: center;
-    height: 0;
-    background: rgba(128, 128, 128, 0.319);
-    opacity: 0.2;
-
   }
 }
 

@@ -7,18 +7,33 @@ import { add_to_cart } from "../data/cartSlice";
 import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CircularProgress from '@mui/material/CircularProgress';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+import ProductSkeleton from "./ProductSkeleton";
 const ProductsDetaills = () => {
-    const [product, setProduct] = useState([])
+    const [product, setProduct] = useState(null)
     const { id } = useParams()
-    const dispatch = useDispatch()
+    const token = sessionStorage.getItem("token")
+    const [currentImage, setCurrentImage] = useState(0)
     useEffect(() => {
-        axios.get(`https://api.escuelajs.co/api/v1/products/${id}`)
-            .then((res) => setProduct(res.data))
-    }, [])
-    function handleClick() {
-        dispatch(increment())
-        dispatch(add_to_cart({ ...product }))
-    }
+        const getProduct = async () => {
+            try {
+                const res = await axios.get(`http://localhost:8000/api/product/${id}`, {
+                    headers: {
+                        Accept: "application/json",
+                        Authorization: `Bearer ${token}`
+                    }
+                })
+                setProduct(res.data.data)
+
+            } catch (err) {
+                console.log(err)
+            }
+        }
+        getProduct()
+    }, [id, product])
+
     const notify = () => toast.success('product with success', {
         position: "top-center",
         autoClose: 2000,
@@ -29,21 +44,42 @@ const ProductsDetaills = () => {
         progress: undefined,
         theme: "colored",
     });
+    const updateCurrentImage = (id) => {
+        setCurrentImage(id)
+    }
+    // if (product === null) return <div className="product-detaille-loader">
+    //     <CircularProgress color="secondary" />
+    // </div>
     return (
         <div className="productsDetaille">
+            {product === null && <ProductSkeleton />}
             <div className="stage">
-                <div className="image">
-                    {product.length !== 0 && <img src={product?.images[0]} alt="image" />}
+                <div className="images">
+                    <div className="image">
+                        {product !== null && <img src={`http://localhost:8000/images/${product.images[currentImage]}`} alt="pic" />}
+                    </div>
+                    <div className="image-gallery">
+                        {product !== null && product.images.map((img, i) => (
+                            <img key={i} src={`http://localhost:8000/images/${img}`} alt="pic" onClick={() => updateCurrentImage(i)} />
+                        ))}
+                    </div>
                 </div>
-                <div className="section2">
-                    <h1>{product?.title}</h1>
-                    <span>${product?.price}</span>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore quos itaque, eius temporibus ab labore vero illum amet praesentium ea aliquid, distinctio reiciendis, delectus asperiores sint expedita perspiciatis fuga maiores sequi magnam ipsam. Quaerat omnis aut deleniti eos adipisci. Illo.</p>
-                    <button className="add-cart" onClick={() => {
-                        handleClick()
-                        notify()
-                    }}>Add to cart</button>
-                </div>
+                {product !== null &&
+                    <div className="section2">
+
+                        <h1>{product?.name}</h1>
+                        <span>${product?.price}</span>
+                        <p>{product?.description}</p>
+                        <span>In Stock {product?.quantity}</span>
+
+                        <div>
+                            <button className="add-cart" onClick={() => {
+                                handleClick()
+                                notify()
+                            }}>Add to cart</button>
+                        </div>
+                    </div>
+                }
             </div>
             <ToastContainer />
         </div>
